@@ -1,7 +1,5 @@
 import pygame
 import random
-import arabic_reshaper
-from bidi.algorithm import get_display
 
 
 # Initialize pygame
@@ -128,7 +126,7 @@ while running:
         display_surface.blit(continue_text, continue_text_rect)
         pygame.display.update()
 
-        # Pause the game until player pressed a key, then reset the game
+
         pygame.mixer.music.stop()
         is_paused = True
         while is_paused:
@@ -140,7 +138,7 @@ while running:
                     player_image_rect.y = HEIGHT // 2
                     coin_velocity = COIN_STARTING_VELOCITY
                     pygame.mixer.music.play(-1, 0.0)
-                    is_paused = False
+                    # Pause the game until player pressed a key, then reset the game                    is_paused = False
 
                 # Player want to quit
                 if event.type == pygame.QUIT:
