@@ -44,27 +44,27 @@ class HUD:
 
 
     def render_game_over(self):
-        self.game_over_text = self.settings.font.render(
+        game_over_text = self.settings.font.render(
             'Game Over', True, self.settings.RED)
-        self.game_over_text_rect = self.game_over_text.get_rect()
-        self.game_over_text_rect.center = (self.settings.WIDTH // 2 ,self.settings.HEIGHT // 2 - 64)
+        game_over_text_rect = game_over_text.get_rect()
+        game_over_text_rect.center = (self.settings.WIDTH // 2 ,self.settings.HEIGHT // 2 - 64)
 
-        self.continue_text = self.settings.font.render(
+        continue_text = self.settings.font.render(
             'Press any key to play again', True, self.settings.GREEN)
-        self.continue_text_rect = self.continue_text.get_rect()
-        self.continue_text_rect.center = (self.settings.WIDTH // 2, self.settings.HEIGHT // 2 + 64)
+        continue_text_rect = continue_text.get_rect()
+        continue_text_rect.center = (self.settings.WIDTH // 2, self.settings.HEIGHT // 2 + 64)
 
-        self.screen.blit(self.game_over_text, self.game_over_text_rect)
-        self.screen.blit(self.continue_text, self.continue_text_rect)
+        self.screen.blit(game_over_text, game_over_text_rect)
+        self.screen.blit(continue_text, continue_text_rect)
 
 
     def render_paused_screen(self):
-        self.paused_text = self.settings.font.render(
+        paused_text = self.settings.font.render(
             'PAUSED', True, self.settings.GREEN
         )
-        self.paused_text_rect = self.paused_text.get_rect()
-        self.paused_text_rect.center = (self.settings.WIDTH // 2, self.settings.HEIGHT // 2)
-        self.screen.blit(self.paused_text, self.paused_text_rect)
+        paused_text_rect = paused_text.get_rect()
+        paused_text_rect.center = (self.settings.WIDTH // 2, self.settings.HEIGHT // 2)
+        self.screen.blit(paused_text, paused_text_rect)
 
 
     def render_start_screen(self):

@@ -115,15 +115,15 @@ class FeedDragon:
 
     def _key_held_down(self):
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_UP] and self.dragon.dragon_image_rect.top > 64:
+        if keys[pygame.K_UP] and self.dragon.image_rect.top > 64:
             self.dragon.move_up()
 
-        if keys[pygame.K_DOWN] and self.dragon.dragon_image_rect.bottom < self.settings.HEIGHT:
+        if keys[pygame.K_DOWN] and self.dragon.image_rect.bottom < self.settings.HEIGHT:
             self.dragon.move_down()
 
 
     def _collision(self):
-        if self.dragon.dragon_image_rect.colliderect(self.coin.coin_image_rect):
+        if self.dragon.image_rect.colliderect(self.coin.image_rect):
             self.coin.play_coin_sound()
             self.settings.score += 1
             self.settings.coin_velocity += self.settings.COIN_ACCELERATION
@@ -132,7 +132,7 @@ class FeedDragon:
 
 
     def _detect_miss(self):
-        if self.coin.coin_image_rect.x < 0:
+        if self.coin.image_rect.x < 0:
             self.coin.play_miss_sound()
             self.settings.player_lives -= 1
             self.hud.render_lives()
