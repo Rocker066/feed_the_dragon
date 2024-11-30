@@ -26,7 +26,7 @@ class Coin:
 
 
     def move(self):
-            self.image_rect.x -= self.settings.coin_velocity
+        self.image_rect.x -= self.settings.coin_velocity
 
 
     def play_coin_sound(self):

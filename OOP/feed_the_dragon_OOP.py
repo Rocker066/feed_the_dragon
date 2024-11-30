@@ -152,12 +152,13 @@ class FeedDragon:
                 # Player wants to play again
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN:
-                        pygame.mixer.music.play()
-                        self.settings.reset()
-                        self.dragon.reset()
-                        self.hud.render_lives()
-                        self.hud.render_score()
-                        is_paused = False
+                        if event.key == pygame.K_RETURN:
+                            pygame.mixer.music.play()
+                            self.settings.reset()
+                            self.dragon.reset()
+                            self.hud.render_lives()
+                            self.hud.render_score()
+                            is_paused = False
 
                     # Player wants to quit
                     if event.type == pygame.QUIT:

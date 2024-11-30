@@ -31,6 +31,7 @@ class Settings:
 
         # Set font
         self.font = pygame.font.Font('assets/AttackGraffiti.ttf', 32)
+        self.font2 = pygame.font.Font('assets/AttackGraffiti.ttf', 18)
 
 
     def reset(self):

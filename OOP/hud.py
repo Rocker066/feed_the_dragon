@@ -30,8 +30,14 @@ class HUD:
         self.lives_text_rect = self.lives_text.get_rect()
         self.lives_text_rect.topright = (self.settings.WIDTH - 10, 10)
 
+        # Render created_by text
+        self.created_by_text = self.settings.font2.render('Created by: MAHYAR', True, self.settings.WHITE)
+        self.created_by_text_rect = self.created_by_text.get_rect()
+        self.created_by_text_rect.center = (self.settings.WIDTH // 2, self.settings.HEIGHT - 20)
+
 
     def render_score(self):
+        self.score_text_rect.topleft = (10, 10)
         self.score_text = self.settings.font.render(
             'Score : ' + str(self.settings.score),
             True, self.settings.GREEN, self.settings.DARKGREEN)
@@ -44,15 +50,18 @@ class HUD:
 
 
     def render_game_over(self):
+        self.score_text_rect.centerx = (self.settings.WIDTH // 2)
+        self.score_text_rect.y = 44
+        self.screen.blit(self.score_text, self.score_text_rect)
         game_over_text = self.settings.font.render(
             'Game Over', True, self.settings.RED)
         game_over_text_rect = game_over_text.get_rect()
-        game_over_text_rect.center = (self.settings.WIDTH // 2 ,self.settings.HEIGHT // 2 - 64)
+        game_over_text_rect.center = (self.settings.WIDTH // 2 ,self.settings.HEIGHT // 2 )
 
         continue_text = self.settings.font.render(
-            'Press any key to play again', True, self.settings.GREEN)
+            'Press ENTER to play again', True, self.settings.WHITE)
         continue_text_rect = continue_text.get_rect()
-        continue_text_rect.center = (self.settings.WIDTH // 2, self.settings.HEIGHT // 2 + 64)
+        continue_text_rect.center = (self.settings.WIDTH // 2, self.settings.HEIGHT // 2 + 84)
 
         self.screen.blit(game_over_text, game_over_text_rect)
         self.screen.blit(continue_text, continue_text_rect)
@@ -69,13 +78,13 @@ class HUD:
 
     def render_start_screen(self):
         start_title = self.settings.font.render(
-            'Feed the Dragon', True, self.settings.WHITE
+            '<> Feed the Dragon <>', True, self.settings.WHITE
         )
         start_title_rect = start_title.get_rect()
         start_title_rect.center = (self.settings.WIDTH // 2, self.settings.HEIGHT // 2 + 50)
 
         start_text = self.settings.font.render(
-            'Press ENTER to start', True, self.settings.RED
+            'Press ENTER to start', True, self.settings.GREEN
         )
         start_text_rect = start_text.get_rect()
         start_text_rect.center = (self.settings.WIDTH // 2, self.settings.HEIGHT // 2 - 50)
@@ -90,3 +99,4 @@ class HUD:
         self.screen.blit(self.lives_text, self.lives_text_rect)
         pygame.draw.line(self.screen, self.settings.WHITE,
                          (0, 64), (self.settings.WIDTH, 64), 2)
+        self.screen.blit(self.created_by_text, self.created_by_text_rect)
